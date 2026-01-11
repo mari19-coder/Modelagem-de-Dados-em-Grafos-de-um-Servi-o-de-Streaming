@@ -34,7 +34,7 @@ O foco está nos **relacionamentos** entre entidades, permitindo criar um sistem
 
 ---
 
-## 📊 Exemplos de Queries
+## 📊  Querie
 
 ![Grafo Neo4J](visualisation.png)
 
