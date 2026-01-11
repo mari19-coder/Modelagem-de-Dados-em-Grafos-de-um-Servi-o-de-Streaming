@@ -1,0 +1,171 @@
+MERGE (:User {name:"Mari"});
+MERGE (:User {name:"João"});
+MERGE (:User {name:"Ana"});
+MERGE (:User {name:"Carlos"});
+MERGE (:User {name:"Beatriz"});
+MERGE (:User {name:"Pedro"});
+MERGE (:User {name:"Lucas"});
+MERGE (:User {name:"Fernanda"});
+MERGE (:User {name:"Rafael"});
+MERGE (:User {name:"Sofia"});
+
+MERGE (:Movie {title:"Inception"});
+MERGE (:Movie {title:"The Matrix"});
+MERGE (:Movie {title:"Interstellar"});
+MERGE (:Movie {title:"The Dark Knight"});
+MERGE (:Movie {title:"Titanic"});
+
+MERGE (:Series {title:"Breaking Bad"});
+MERGE (:Series {title:"Game of Thrones"});
+MERGE (:Series {title:"The Crown"});
+MERGE (:Series {title:"Friends"});
+MERGE (:Series {title:"Stranger Things"});
+
+MERGE (:Genre {name:"Sci-Fi"});
+MERGE (:Genre {name:"Drama"});
+MERGE (:Genre {name:"Romance"});
+MERGE (:Genre {name:"Action"});
+MERGE (:Genre {name:"Fantasy"});
+MERGE (:Genre {name:"Historical"});
+MERGE (:Genre {name:"Comedy"});
+MERGE (:Genre {name:"Crime"});
+
+MERGE (:Actor {name:"Leonardo DiCaprio"});
+MERGE (:Actor {name:"Keanu Reeves"});
+MERGE (:Actor {name:"Matthew McConaughey"});
+MERGE (:Actor {name:"Christian Bale"});
+MERGE (:Actor {name:"Millie Bobby Brown"});
+MERGE (:Actor {name:"Bryan Cranston"});
+MERGE (:Actor {name:"Emilia Clarke"});
+MERGE (:Actor {name:"Olivia Colman"});
+MERGE (:Actor {name:"Jennifer Aniston"});
+MERGE (:Actor {name:"Kate Winslet"});
+
+MERGE (:Director {name:"Christopher Nolan"});
+MERGE (:Director {name:"James Cameron"});
+MERGE (:Director {name:"The Wachowskis"});
+MERGE (:Director {name:"The Duffer Brothers"});
+MERGE (:Director {name:"Vince Gilligan"});
+MERGE (:Director {name:"David Benioff"});
+MERGE (:Director {name:"Peter Morgan"});
+MERGE (:Director {name:"Kevin S. Bright"});
+
+MATCH (m:Movie {title:"Inception"})
+MERGE (g:Genre {name:"Sci-Fi"})
+MERGE (a:Actor {name:"Leonardo DiCaprio"})
+MERGE (d:Director {name:"Christopher Nolan"})
+MERGE (m)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(m)
+MERGE (d)-[:DIRECTED]->(m);
+
+MATCH (m:Movie {title:"The Matrix"})
+MERGE (g:Genre {name:"Sci-Fi"})
+MERGE (a:Actor {name:"Keanu Reeves"})
+MERGE (d:Director {name:"James Cameron"})
+MERGE (m)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(m)
+MERGE (d)-[:DIRECTED]->(m);
+
+MATCH (m:Movie {title:"Interstellar"})
+MERGE (g:Genre {name:"Sci-Fi"})
+MERGE(a:Actor {name:"Matthew McConaughey"})
+MERGE (d:Director {name:"The Wachowskis"})
+MERGE (m)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(m)
+MERGE (d)-[:DIRECTED]->(m);
+
+MATCH (m:Movie {title:"The Dark Knight"})
+MERGE (g:Genre {name:"Action"})
+MERGE(a:Actor {name:"Christian Bale"})
+MERGE(d:Director {name:"The Duffer Brothers"})
+MERGE (m)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(m)
+MERGE (d)-[:DIRECTED]->(m);
+
+MATCH (m:Movie {title:"Titanic"})
+MERGE (g:Genre {name:"Romance"})
+MERGE (a:Actor {name:"Millie Bobby Brown"})
+MERGE (d:Director {name:"Vince Gilligan"})
+MERGE (m)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(m)
+MERGE (d)-[:DIRECTED]->(m);
+
+MATCH (s:Series {title:"Stranger Things"})
+MERGE (g:Genre {name:"Fantasy"})
+MERGE (a:Actor {name:"Millie Bobby Brown"})
+MERGE (d:Director {name:"The Duffer Brothers"})
+MERGE (s)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(s)
+MERGE (d)-[:DIRECTED]->(s);
+
+
+MATCH (s:Series {title:"Breaking Bad"})
+MERGE (g:Genre {name:"Crime"})
+MERGE (a:Actor {name:"Bryan Cranston"})
+MERGE (d:Director {name:"Vince Gilligan"})
+MERGE (s)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(s)
+MERGE (d)-[:DIRECTED]->(s);
+
+MATCH (s:Series {title:"Game of Thrones"})
+MERGE (g:Genre {name:"Fantasy"})
+MERGE (a:Actor {name:"Emilia Clarke"})
+MERGE (d:Director {name:"David Benioff"})
+MERGE (s)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(s)
+MERGE (d)-[:DIRECTED]->(s);
+
+MATCH (s:Series {title:"The Crown"})
+MERGE (g:Genre {name:"Historical"})
+MERGE (a:Actor {name:"Olivia Colman"})
+MERGE (d:Director {name:"Peter Morgan"})
+MERGE (s)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(s)
+MERGE (d)-[:DIRECTED]->(s);
+
+MATCH (s:Series {title:"Friends"})
+MERGE (g:Genre {name:"Comedy"})
+MERGE (a:Actor {name:"Jennifer Aniston"})
+MERGE (d:Director {name:"Kevin S. Bright"})
+MERGE (s)-[:IN_GENRE]->(g)
+MERGE (a)-[:ACTED_IN]->(s)
+MERGE (d)-[:DIRECTED]->(s);
+
+MATCH (u:User {name:"Carlos"}), (m:Movie {title:"Inception"})
+MERGE (u)-[:WATCHED {year:2010}]->(m);
+
+MATCH (u:User {name:"João"}), (m:Movie {title:"The Matrix"})
+MERGE (u)-[:WATCHED {year:1999}]->(m);
+
+MATCH (u:User {name:"Ana"}), (m:Movie {title:"Interstellar"})
+MERGE (u)-[:WATCHED {year:2014}]->(m);
+
+MATCH (u:User {name:"Carlos"}), (m:Movie {title:"The Dark Knight"})
+MERGE (u)-[:WATCHED {year:2008}]->(m);
+
+MATCH (u:User {name:"Beatriz"}), (m:Movie {title:"Titanic"})
+MERGE (u)-[:WATCHED {year:1997}]->(m);
+
+MATCH (u:User {name:"Pedro"}), (s:Series {title:"Breaking Bad"})
+MERGE (u)-[:WATCHED {year:2008}]->(s);
+
+MATCH (u:User {name:"Lucas"}), (s:Series {title:"Game of Thrones"})
+MERGE (u)-[:WATCHED {year:2011}]->(s);
+
+MATCH (u:User {name:"Fernanda"}), (s:Series {title:"The Crown"})
+MERGE (u)-[:WATCHED {year:2016}]->(s);
+
+MATCH (u:User {name:"Rafael"}), (s:Series {title:"Friends"})
+MERGE (u)-[:WATCHED {year:1994}]->(s);
+
+MATCH (u:User {name:"Sofia"}), (s:Series {title:"Stranger Things"})
+MERGE (u)-[:WATCHED {year:2016}]->(s);
+
+CREATE CONSTRAINT user_name IF NOT EXISTS
+FOR (u:User) REQUIRE u.name IS UNIQUE;
+
+CREATE CONSTRAINT movie_title IF NOT EXISTS
+FOR (m:Movie) REQUIRE m.title IS UNIQUE;
+
+CREATE CONSTRAINT series_title IF NOT EXISTS
+FOR (s:Series) REQUIRE s.title IS UNIQUE;
