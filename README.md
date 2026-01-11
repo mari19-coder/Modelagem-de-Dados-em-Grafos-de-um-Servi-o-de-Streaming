@@ -28,7 +28,7 @@ O foco está nos **relacionamentos** entre entidades, permitindo criar um sistem
 ## 🚀 Como rodar no Neo4j Aura
 
 1. Crie um banco no [Neo4j Aura](https://console.neo4j.io).
-2. Copie o conteúdo do arquivo `streaming-graph.cypher`.
+2. Copie o conteúdo do arquivo `Neo4j-Stream.txt`.
 3. Cole no **Query Editor** do Aura e execute.
 4. Explore o grafo com `MATCH` e `RETURN`.
 
